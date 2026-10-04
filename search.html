@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BUYGEN — AI Search</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#06111f;color:#eef7ff;font-family:Arial,sans-serif;min-height:100vh}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #18354d;background:rgba(4,14,26,.92);position:sticky;top:0;z-index:5}
+.logo{font-size:23px;font-weight:800;letter-spacing:3px;color:#bcecff}
+nav a{color:#a9bfd4;text-decoration:none;margin:0 13px;font-size:14px}
+nav a:hover,nav a.active{color:#8edcff}
+main{max-width:1180px;margin:auto;padding:55px 25px}
+.eyebrow{letter-spacing:4px;color:#83d9ff;font-size:12px}
+h1{font-size:52px;line-height:1.05;margin:15px 0}
+.subtitle{font-size:18px;color:#a9bfd4;max-width:700px}
+.searchbox{margin-top:35px;background:rgba(10,28,45,.9);border:1px solid #244861;border-radius:22px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+textarea{width:100%;height:100px;background:#061522;color:white;border:1px solid #315775;border-radius:14px;padding:17px;font-size:17px;outline:none}
+textarea:focus{border-color:#83d9ff}
+button{background:#83d9ff;border:0;padding:14px 24px;border-radius:11px;font-weight:800;color:#03111c;cursor:pointer;margin-top:13px}
+button:hover{transform:translateY(-1px)}
+.section{margin-top:25px;background:rgba(10,27,43,.92);border:1px solid #203f57;border-radius:20px;padding:22px}
+.status{color:#83d9ff;font-size:13px;letter-spacing:1px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{background:#12344a;border:1px solid #28536d;color:#9fe3ff;border-radius:30px;padding:7px 12px;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin-top:17px}
+.card{background:#0c2033;border:1px solid #244761;border-radius:16px;padding:19px}
+.card.best{border-color:#83d9ff;box-shadow:0 0 28px rgba(61,180,230,.12)}
+.card h3{margin-top:0}
+.price{font-size:26px;font-weight:800;margin:10px 0}
+.meta{color:#a9bfd4;line-height:1.8;font-size:14px}
+.match{display:inline-block;background:#163c50;color:#a7e7ff;padding:6px 10px;border-radius:20px;font-size:12px;margin:5px 0}
+.reason{color:#abc1d2;font-size:13px;line-height:1.8;margin-top:10px}
+.approve{background:#b9f4d2;margin-top:18px}
+.direct{margin-top:15px;color:#9fe3ff}
+.direct a{color:#8edcff;font-weight:bold;text-decoration:none}
+footer{text-align:center;padding:35px;color:#607d94;font-size:12px}
+@media(max-width:700px){h1{font-size:38px}nav a{margin:0 5px;font-size:11px}.subtitle{font-size:15px}}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">BUYGEN</div>
+<div>
+<a href="index.html">HOME</a>
+<a href="search.html" class="active">AI SEARCH</a>
+<a href="gadgets.html">GADGETS</a>
+<a href="engineering.html">ENGINEERING</a>
+<a href="robotics.html">ROBOTICS</a>
+<a href="tools.html">TOOLS</a>
+</div>
+</nav>
+
+<main>
+
+<div class="eyebrow">BUYGEN AI COMMERCE AGENT</div>
+
+<h1>Give the goal.<br>Let BUYGEN handle the buying.</h1>
+
+<p class="subtitle">
+Tell BUYGEN what you need. The agent understands your requirements,
+finds suitable products, compares them and recommends the best
+budget-friendly choice.
+</p>
+
+<div class="searchbox">
+<textarea id="goal" placeholder="Example: Find headphones under ₹5,000 with ANC and 30+ hours battery."></textarea>
+<button onclick="runAgent()">ANALYZE & COMPARE →</button>
+</div>
+
+<div id="result"></div>
+
+</main>
+
+<footer>
+BUYGEN — Intelligent Commerce for Technology · Human-controlled AI commerce
+</footer>
+
+<script>
+
+async function runAgent(){
+
+const goal=document.getElementById("goal").value.trim();
+
+if(!goal){
+alert("Enter your shopping goal first.");
+return;
+}
+
+const result=document.getElementById("result");
+
+result.innerHTML=
+'<div class="section"><div class="status">◉ BUYGEN AGENT IS WORKING</div><p>Understanding requirements → searching → comparing → reasoning...</p></div>';
+
+try{
+
+const response=await fetch(
+"http://127.0.0.1:8000/agent/run",
+{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({goal:goal})
+}
+);
+
+if(!response.ok) throw new Error();
+
+const data=await response.json();
+
+renderAgent(data);
+
+}catch(error){
+
+result.innerHTML=
+'<div class="section">'+
+'<div class="status">⚠ BUYGEN BACKEND NOT CONNECTED</div>'+
+'<p>Start the FastAPI server first:</p>'+
+'<b>python -m uvicorn backend.main:app --reload --port 8000</b>'+
+'</div>';
+
+}
+
+}
+
+function renderAgent(data){
+
+const result=document.getElementById("result");
+
+let requirementHTML="";
+
+Object.entries(data.requirements || {}).forEach(([key,value])=>{
+
+if(value!==null && value!==false){
+
+requirementHTML+=
+'<span class="tag">'+
+key.replaceAll("_"," ")+": "+value+
+'</span>';
+
+}
+
+});
+
+let comparison="";
+
+(data.candidates || []).forEach((p,index)=>{
+
+comparison+=
+'<div class="card '+(index===0?"best":"")+'">'+
+'<h3>'+p.name+'</h3>'+
+'<div class="price">₹'+Number(p.price).toLocaleString("en-IN")+'</div>'+
+'<span class="match">'+p.match_percentage+'% MATCH</span>'+
+'<div class="meta">'+
+'Category: '+(p.category||"Technology")+'<br>'+
+'Rating: '+p.rating+' ★<br>'+
+(p.battery_hours ? 'Battery: '+p.battery_hours+' hours<br>':'')+
+'ANC: '+(p.anc?"Yes":"No")+
+'</div>'+
+'<div class="reason">'+
+(p.reasons||[]).join("<br>")+
+'</div>'+
+'</div>';
+
+});
+
+let recommendation="";
+
+if(data.recommendation){
+
+const p=data.recommendation;
+
+recommendation=
+'<div class="section">'+
+'<div class="status">✓ BUYGEN DECISION</div>'+
+'<h2>'+p.name+'</h2>'+
+'<div class="price">₹'+Number(p.price).toLocaleString("en-IN")+'</div>'+
+'<span class="match">'+p.match_percentage+'% REQUIREMENT MATCH</span>'+
+'<div class="reason">'+
+'<b>Why BUYGEN selected it:</b><br>'+
+(p.reasons||[]).join("<br>")+
+'<br><br>Best balance of requirements, price and product value.'+
+'</div>'+
+'<button class="approve" onclick="approveProduct(\''+
+p.product_link+
+'\')">APPROVE & VIEW DIRECT PRODUCT</button>'+
+'<div id="approved" class="direct"></div>'+
+'</div>';
+
+}else{
+
+recommendation=
+'<div class="section">'+
+'<div class="status">NO SUITABLE MATCH</div>'+
+'<p>Try increasing your budget or changing one requirement.</p>'+
+'</div>';
+
+}
+
+result.innerHTML=
+
+'<div class="section">'+
+'<div class="status">✓ REQUIREMENTS UNDERSTOOD</div>'+
+'<div class="tags">'+requirementHTML+'</div>'+
+'<p>'+data.message+'</p>'+
+'</div>'+
+
+recommendation+
+
+'<div class="section">'+
+'<h2>AI PRODUCT COMPARISON</h2>'+
+'<p class="subtitle">BUYGEN compared the available products against your goal.</p>'+
+'<div class="grid">'+comparison+'</div>'+
+'</div>';
+
+}
+
+function approveProduct(link){
+
+document.getElementById("approved").innerHTML=
+"✓ Human approval recorded. "+
+'<a href="'+link+'" target="_blank">Open direct BUYGEN product →</a>';
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+
+/* =========================================================
+   BUYGEN VISUAL SYSTEM
+   Home: blue digital crowd
+   Search: luminous blue figures
+   Overall type: Fate-inspired elegant serif
+   Search/results type: Crescendo-inspired display serif
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=DM+Sans:wght@400;500;600;700&family=Italianno&display=swap');
+
+:root{
+  --bg:#02040a;
+  --panel:rgba(2,8,18,.72);
+  --white:#f5f8ff;
+  --blue:#168cff;
+  --ice:#9bdcff;
+  --line:rgba(75,170,255,.38);
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+body,
+button,
+input,
+select,
+textarea{
+  font-family:"Bodoni Moda", Georgia, serif;
+  letter-spacing:.01em;
+}
+
+h1,h2,h3,h4,.logo,.brand,.nav-logo,.hero-title{
+  font-family:"Bodoni Moda", Georgia, serif;
+  font-weight:500;
+  letter-spacing:-.035em;
+}
+
+p,.nav-links,.nav-link,.button,.cta,.chip,.tag,.small-text,
+input,select,.product-card,.price,.rating,.match,.filter,
+.result,.assistant-message{
+  font-family:"DM Sans",Arial,sans-serif;
+}
+
+/* Search/results get the decorative editorial feel */
+.search-section,
+.search-section h1,
+.search-section h2,
+.search-section h3,
+.results-section,
+.results-section h2,
+.results-section h3,
+.product-card h3,
+.product-card .product-name{
+  font-family:"Bodoni Moda", Georgia, serif;
+}
+
+.search-section .search-input,
+.search-section input,
+.search-section button,
+.results-section .price,
+.results-section .rating,
+.results-section .match,
+.results-section .product-meta,
+.results-section .filter,
+.results-section .chip{
+  font-family:"DM Sans",Arial,sans-serif;
+}
+
+/* ---------- GLOBAL ---------- */
+body{
+  background:var(--bg);
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(0,115,255,.13),transparent 30%),
+    radial-gradient(circle at 80% 65%,rgba(40,180,255,.10),transparent 32%);
+}
+
+/* ---------- HOME PAGE ---------- */
+/* Put class="home-page" on body or main home wrapper */
+.home-page,
+body.home-page{
+  background:
+    linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.46)),
+    url("assets/home-bg.gif") center/cover fixed no-repeat;
+}
+
+.home-page::after,
+body.home-page::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 25% 45%,rgba(20,105,255,.16),transparent 32%),
+    radial-gradient(circle at 75% 35%,rgba(70,180,255,.10),transparent 30%);
+  mix-blend-mode:screen;
+}
+
+.home-page .navbar,
+.home-page header{
+  background:rgba(0,0,0,.32);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(130,200,255,.18);
+}
+
+.home-page .hero{
+  min-height:82vh;
+  background:transparent;
+}
+
+.home-page .hero-title{
+  color:#fff;
+  text-shadow:0 0 25px rgba(100,190,255,.18);
+}
+
+.home-page .hero-title .accent,
+.home-page .accent{
+  color:#58baff;
+}
+
+.home-page .cta,
+.home-page .primary-button{
+  background:rgba(18,117,255,.18);
+  color:#fff;
+  border:1px solid #2397ff;
+  box-shadow:0 0 25px rgba(22,140,255,.28);
+}
+
+/* Remove old character completely */
+.hero-face,
+.face,
+.character,
+.character-art,
+.face-art,
+.eye-art,
+.iris-art,
+.portal-character,
+.hero-character,
+.face-illustration,
+.eye-character{
+  display:none!important;
+}
+
+/* ---------- SEARCH PAGE ---------- */
+.search-page,
+body.search-page{
+  background:
+    linear-gradient(rgba(0,4,12,.20),rgba(0,4,12,.42)),
+    url("assets/search-bg.jpeg") center/cover fixed no-repeat;
+}
+
+.search-page::before,
+body.search-page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(20,150,255,.14),transparent 42%),
+    linear-gradient(90deg,rgba(0,0,0,.25),transparent 50%,rgba(0,0,0,.25));
+}
+
+.search-page .navbar,
+.search-page header{
+  background:rgba(0,8,20,.42);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(70,180,255,.28);
+}
+
+.search-section,
+.agent-section,
+.search-panel,
+.results-section{
+  background:rgba(0,7,18,.42);
+  backdrop-filter:blur(7px);
+}
+
+.search-section h1,
+.agent-section h1{
+  font-family:"Bodoni Moda",Georgia,serif;
+  font-weight:500;
+  color:#fff;
+}
+
+.search-section .search-box,
+.agent-section .search-box,
+.search-section input,
+.agent-section input{
+  background:rgba(0,10,25,.70);
+  border:1px solid rgba(50,165,255,.72);
+  color:#fff;
+  box-shadow:0 0 28px rgba(0,125,255,.12);
+}
+
+/* ---------- RESULTS ---------- */
+.product-card,
+.result-card{
+  background:rgba(0,8,18,.76);
+  border:1px solid rgba(40,155,255,.48);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+  transition:.25s ease;
+}
+
+.product-card:hover,
+.result-card:hover{
+  border-color:#55baff;
+  box-shadow:0 0 30px rgba(0,135,255,.20);
+  transform:translateY(-3px);
+}
+
+.product-card h3,
+.result-card h3{
+  font-family:"Bodoni Moda",Georgia,serif;
+  font-weight:500;
+  color:#fff;
+}
+
+.product-card .price,
+.result-card .price{
+  color:#9ddcff;
+  font-weight:700;
+}
+
+.product-card button,
+.result-card button{
+  border:1px solid #1e91ff;
+  background:rgba(15,115,255,.13);
+  color:#fff;
+  font-family:"DM Sans",Arial,sans-serif;
+}
+
+/* ---------- NAV ---------- */
+.nav-links a,
+.nav-links button{
+  color:#eaf6ff;
+  font-family:"DM Sans",Arial,sans-serif;
+}
+
+.nav-links a:hover{
+  color:#55baff;
+}
+
+.logo,
+.brand,
+.nav-logo{
+  color:#fff;
+  text-shadow:0 0 18px rgba(70,180,255,.25);
+}
+
+/* ---------- ASSISTANT ---------- */
+.assistant-panel{
+  background:rgba(0,8,18,.92);
+  border:1px solid rgba(50,165,255,.5);
+  backdrop-filter:blur(16px);
+}
+
+.assistant-message{
+  border-left:2px solid #168cff;
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:900px){
+  .home-page,
+  .search-page,
+  body.home-page,
+  body.search-page{
+    background-attachment:scroll;
+  }
+}

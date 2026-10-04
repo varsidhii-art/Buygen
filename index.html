@@ -1,0 +1,555 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BUYGEN — Intelligent Commerce</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+    min-height:100vh;
+    color:#eef7ff;
+    background:
+      radial-gradient(circle at 50% 35%,rgba(36,119,190,.34),transparent 28%),
+      radial-gradient(circle at 15% 70%,rgba(19,78,130,.28),transparent 30%),
+      radial-gradient(circle at 85% 15%,rgba(72,153,215,.18),transparent 25%),
+      linear-gradient(135deg,#020914 0%,#061a2d 45%,#010812 100%);
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
+}
+
+/* atmospheric light */
+body:before{
+    content:"";
+    position:fixed;
+    inset:-20%;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,.52) 78%),
+      repeating-linear-gradient(90deg,transparent 0 120px,rgba(105,190,255,.025) 121px,transparent 122px);
+    z-index:0;
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    width:70vw;
+    height:70vw;
+    max-width:900px;
+    max-height:900px;
+    left:50%;
+    top:48%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(78,180,255,.11),transparent 62%);
+    filter:blur(25px);
+    pointer-events:none;
+    z-index:0;
+}
+
+/* subtle horizon */
+.horizon{
+    position:fixed;
+    left:-10%;
+    right:-10%;
+    bottom:5%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(130,208,255,.3),transparent);
+    box-shadow:0 0 45px rgba(71,176,255,.2);
+    z-index:1;
+}
+
+/* navigation */
+nav{
+    position:fixed;
+    top:22px;
+    left:28px;
+    right:28px;
+    height:66px;
+    display:flex;
+    align-items:center;
+    padding:0 24px;
+    border:1px solid rgba(145,210,255,.13);
+    border-radius:18px;
+    background:rgba(3,15,28,.55);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    z-index:20;
+}
+
+.logo{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:.14em;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#78caff;
+    font-size:10px;
+    vertical-align:top;
+}
+
+.links{
+    display:flex;
+    gap:30px;
+    margin-left:auto;
+    align-items:center;
+}
+
+.links a{
+    color:rgba(222,242,255,.66);
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:.18em;
+    transition:.25s;
+}
+
+.links a:hover{
+    color:#fff;
+    text-shadow:0 0 18px rgba(108,203,255,.7);
+}
+
+.start{
+    margin-left:28px;
+    padding:12px 19px;
+    border:1px solid rgba(116,204,255,.35);
+    border-radius:30px;
+    color:#dff4ff!important;
+    background:rgba(50,145,211,.09);
+}
+
+/* hero */
+.hero{
+    position:relative;
+    min-height:100vh;
+    padding:160px 8vw 90px;
+    display:flex;
+    align-items:center;
+    z-index:2;
+}
+
+.hero-grid{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 330px;
+    gap:70px;
+    align-items:center;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    color:#83cdf9;
+    font-size:10px;
+    letter-spacing:.28em;
+    margin-bottom:28px;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#72d0ff;
+    box-shadow:0 0 20px #72d0ff;
+}
+
+h1{
+    max-width:920px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(72px,9.5vw,158px);
+    font-weight:500;
+    line-height:.76;
+    letter-spacing:-.055em;
+}
+
+h1 em{
+    display:block;
+    color:#8ed5ff;
+    font-weight:400;
+}
+
+.sub{
+    max-width:590px;
+    margin-top:42px;
+    color:rgba(220,239,250,.58);
+    font-size:14px;
+    line-height:1.9;
+    font-weight:300;
+}
+
+.actions{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-top:42px;
+}
+
+.primary{
+    display:inline-flex;
+    align-items:center;
+    gap:22px;
+    padding:16px 23px;
+    border-radius:40px;
+    background:#eaf7ff;
+    color:#03101b;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.17em;
+    box-shadow:0 0 45px rgba(93,196,255,.16);
+    transition:.3s;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 60px rgba(93,196,255,.35);
+}
+
+.secondary{
+    color:rgba(218,241,255,.6);
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:.18em;
+}
+
+/* agent visualization */
+.visual{
+    position:relative;
+    height:500px;
+}
+
+.orbit{
+    position:absolute;
+    width:350px;
+    height:350px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-15deg);
+    border:1px solid rgba(113,204,255,.17);
+    border-radius:50%;
+    box-shadow:
+      0 0 80px rgba(65,168,235,.08),
+      inset 0 0 80px rgba(65,168,235,.04);
+}
+
+.orbit:before,
+.orbit:after{
+    content:"";
+    position:absolute;
+    inset:28px;
+    border:1px solid rgba(115,202,255,.09);
+    border-radius:50%;
+}
+
+.orbit:after{
+    inset:-45px;
+    border-color:rgba(115,202,255,.055);
+}
+
+.core{
+    position:absolute;
+    width:130px;
+    height:130px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 40% 35%,#c9f0ff 0 3%,#55c5ff 10%,rgba(31,129,190,.5) 28%,rgba(4,36,61,.7) 60%,transparent 72%);
+    box-shadow:
+      0 0 40px rgba(75,193,255,.5),
+      0 0 120px rgba(53,155,220,.22);
+    animation:pulse 4s ease-in-out infinite;
+}
+
+.ring{
+    position:absolute;
+    border:1px solid rgba(113,210,255,.2);
+    border-radius:50%;
+}
+
+.r1{width:420px;height:150px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(25deg)}
+.r2{width:470px;height:180px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-32deg)}
+
+.node{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#a5e5ff;
+    box-shadow:0 0 18px #58c8ff;
+}
+
+.n1{left:12%;top:26%}
+.n2{right:13%;top:19%}
+.n3{right:5%;bottom:25%}
+.n4{left:18%;bottom:15%}
+
+.visual-label{
+    position:absolute;
+    font-size:8px;
+    letter-spacing:.2em;
+    color:rgba(184,226,248,.43);
+}
+
+.l1{left:0;top:18%}
+.l2{right:0;top:32%}
+.l3{left:7%;bottom:19%}
+
+/* lower section */
+.agent{
+    position:relative;
+    min-height:80vh;
+    padding:120px 8vw;
+    z-index:2;
+    border-top:1px solid rgba(130,210,255,.08);
+}
+
+.agent-inner{
+    max-width:1400px;
+    margin:auto;
+}
+
+.agent-kicker{
+    color:#75caff;
+    font-size:9px;
+    letter-spacing:.28em;
+}
+
+.agent h2{
+    margin-top:25px;
+    max-width:850px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(60px,7vw,105px);
+    line-height:.82;
+    font-weight:400;
+}
+
+.agent h2 em{
+    color:#78cfff;
+}
+
+.process{
+    margin-top:90px;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    border-top:1px solid rgba(136,210,255,.12);
+    border-bottom:1px solid rgba(136,210,255,.12);
+}
+
+.step{
+    min-height:130px;
+    padding:25px 15px;
+    border-right:1px solid rgba(136,210,255,.08);
+}
+
+.step:last-child{border-right:0}
+
+.num{
+    font-size:9px;
+    color:#6dbde9;
+    letter-spacing:.15em;
+}
+
+.step strong{
+    display:block;
+    margin-top:28px;
+    font-size:10px;
+    letter-spacing:.15em;
+    font-weight:500;
+    color:rgba(235,248,255,.8);
+}
+
+.control{
+    margin-top:65px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 0;
+    color:rgba(206,234,249,.45);
+    font-size:9px;
+    letter-spacing:.18em;
+}
+
+.control b{
+    color:#82d2ff;
+    font-weight:500;
+}
+
+/* responsive */
+@keyframes pulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-50%,-50%) scale(1.07)}
+}
+
+@media(max-width:900px){
+    nav{left:14px;right:14px}
+    .links{display:none}
+    .hero{padding:140px 7vw 80px}
+    .hero-grid{grid-template-columns:1fr}
+    .visual{height:330px;order:-1}
+    .orbit{width:230px;height:230px}
+    .r1{width:280px;height:110px}
+    .r2{width:320px;height:130px}
+    .core{width:90px;height:90px}
+    .process{grid-template-columns:repeat(2,1fr)}
+    .step:nth-child(2n){border-right:0}
+}
+
+@media(max-width:500px){
+    h1{font-size:65px}
+    .visual{height:270px}
+    .process{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid rgba(136,210,255,.08)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="horizon"></div>
+
+<nav>
+    <a class="logo" href="index.html">BUYGEN<span>®</span></a>
+
+    <div class="links">
+        <a href="index.html">HOME</a>
+        <a href="search.html">AI SEARCH</a>
+        <a href="search.html">GADGETS</a>
+        <a href="search.html">ENGINEERING</a>
+        <a href="search.html">ROBOTICS</a>
+    </div>
+
+    <a class="start" href="search.html">START BUYING ↗</a>
+</nav>
+
+<main>
+
+<section class="hero">
+    <div class="hero-grid">
+
+        <div>
+            <div class="eyebrow">
+                <span class="dot"></span>
+                AI COMMERCE SYSTEM 01 / 03
+            </div>
+
+            <h1>
+                GIVE<br>
+                <em>THE GOAL.</em>
+                LET BUYGEN<br>
+                HANDLE THE BUYING.
+            </h1>
+
+            <p class="sub">
+                An intelligent commerce agent for technology.
+                BUYGEN understands your goal, researches products,
+                compares options and recommends the best fit —
+                while keeping the human in control of every
+                high-impact decision.
+            </p>
+
+            <div class="actions">
+                <a class="primary" href="search.html">
+                    ENTER THE AGENT <span>→</span>
+                </a>
+
+                <a class="secondary" href="#agent">
+                    EXPLORE THE SYSTEM ↓
+                </a>
+            </div>
+        </div>
+
+        <div class="visual">
+            <div class="orbit"></div>
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+
+            <div class="core"></div>
+
+            <span class="node n1"></span>
+            <span class="node n2"></span>
+            <span class="node n3"></span>
+            <span class="node n4"></span>
+
+            <span class="visual-label l1">GOAL INPUT</span>
+            <span class="visual-label l2">AI REASONING</span>
+            <span class="visual-label l3">HUMAN CONTROL</span>
+        </div>
+
+    </div>
+</section>
+
+<section class="agent" id="agent">
+    <div class="agent-inner">
+
+        <div class="agent-kicker">THE BUYGEN AGENT / 02</div>
+
+        <h2>
+            FROM INTENT<br>
+            <em>TO ACTION.</em>
+        </h2>
+
+        <div class="process">
+
+            <div class="step">
+                <span class="num">01</span>
+                <strong>UNDERSTAND</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">02</span>
+                <strong>PLAN</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">03</span>
+                <strong>SEARCH</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">04</span>
+                <strong>COMPARE</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">05</span>
+                <strong>REASON</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">06</span>
+                <strong>RECOMMEND</strong>
+            </div>
+
+            <div class="step">
+                <span class="num">07</span>
+                <strong>HUMAN APPROVAL</strong>
+            </div>
+
+        </div>
+
+        <div class="control">
+            <span>AI AUTONOMY <b>+</b> HUMAN CONTROL</span>
+            <span>BUYGEN / INTELLIGENT COMMERCE FOR TECHNOLOGY</span>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+</body>
+</html>

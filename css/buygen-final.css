@@ -1,0 +1,12 @@
+﻿body {
+    margin: 0;
+    background: #05070a !important;
+    color: white;
+}
+
+.hero,
+.hero-section,
+.home,
+.home-page {
+    min-height: 100vh;
+}

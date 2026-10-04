@@ -1,0 +1,35 @@
+﻿[
+{"id":"g01","name":"Sony WH-CH720N","category":"Gadgets","type":"Headphones","price":4990,"rating":4.4,"battery_hours":35,"anc":true,"spec":"Wireless ANC headphones","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g01"},
+{"id":"g02","name":"JBL Tune 770NC","category":"Gadgets","type":"Headphones","price":4299,"rating":4.3,"battery_hours":70,"anc":true,"spec":"Wireless ANC headphones","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g02"},
+{"id":"g03","name":"Soundcore Space Q45","category":"Gadgets","type":"Headphones","price":4799,"rating":4.5,"battery_hours":50,"anc":true,"spec":"Adaptive ANC headphones","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g03"},
+
+{"id":"g04","name":"Realme Buds Air 6","category":"Gadgets","type":"Earbuds","price":2999,"rating":4.3,"battery_hours":40,"anc":true,"spec":"TWS ANC earbuds","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g04"},
+{"id":"g05","name":"OnePlus Nord Buds 3","category":"Gadgets","type":"Earbuds","price":2299,"rating":4.4,"battery_hours":43,"anc":true,"spec":"Budget ANC earbuds","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g05"},
+
+{"id":"g06","name":"Lenovo IdeaPad Slim 3","category":"Gadgets","type":"Laptop","price":45990,"rating":4.4,"battery_hours":8,"anc":false,"spec":"16GB RAM · 512GB SSD","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g06"},
+{"id":"g07","name":"ASUS Vivobook 15","category":"Gadgets","type":"Laptop","price":52990,"rating":4.5,"battery_hours":10,"anc":false,"spec":"16GB RAM · 512GB SSD","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g07"},
+{"id":"g08","name":"Acer Aspire Lite","category":"Gadgets","type":"Laptop","price":38990,"rating":4.2,"battery_hours":7,"anc":false,"spec":"16GB RAM · 512GB SSD","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=g08"},
+
+{"id":"e01","name":"Arduino Uno Starter Kit","category":"Engineering","type":"Arduino","price":999,"rating":4.6,"battery_hours":0,"anc":false,"spec":"Arduino board + sensors + components","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e01"},
+{"id":"e02","name":"Arduino Mega 2560","category":"Engineering","type":"Arduino","price":1499,"rating":4.7,"battery_hours":0,"anc":false,"spec":"ATmega2560 development board","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e02"},
+{"id":"e03","name":"ESP32 Development Board","category":"Engineering","type":"Microcontroller","price":549,"rating":4.5,"battery_hours":0,"anc":false,"spec":"WiFi + Bluetooth microcontroller","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e03"},
+{"id":"e04","name":"Raspberry Pi 5 4GB","category":"Engineering","type":"Raspberry Pi","price":6999,"rating":4.7,"battery_hours":0,"anc":false,"spec":"4GB single-board computer","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e04"},
+{"id":"e05","name":"HC-SR04 Ultrasonic Sensor","category":"Engineering","type":"Sensor","price":149,"rating":4.4,"battery_hours":0,"anc":false,"spec":"Ultrasonic distance sensor","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e05"},
+{"id":"e06","name":"DHT11 Temperature Sensor","category":"Engineering","type":"Sensor","price":99,"rating":4.3,"battery_hours":0,"anc":false,"spec":"Temperature + humidity sensor","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e06"},
+{"id":"e07","name":"5V Relay Module","category":"Engineering","type":"Module","price":89,"rating":4.4,"battery_hours":0,"anc":false,"spec":"Single-channel relay module","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e07"},
+{"id":"e08","name":"Breadboard Prototype Kit","category":"Engineering","type":"Prototyping","price":349,"rating":4.5,"battery_hours":0,"anc":false,"spec":"Breadboard + jumper wires + components","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=e08"},
+
+{"id":"r01","name":"Arduino 2WD Robot Car Kit","category":"Robotics","type":"Robot Kit","price":1499,"rating":4.5,"battery_hours":0,"anc":false,"spec":"2-wheel robot car kit","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r01"},
+{"id":"r02","name":"4WD Smart Robot Car Kit","category":"Robotics","type":"Robot Kit","price":1899,"rating":4.6,"battery_hours":0,"anc":false,"spec":"4-wheel robotic platform","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r02"},
+{"id":"r03","name":"SG90 Micro Servo","category":"Robotics","type":"Servo","price":129,"rating":4.5,"battery_hours":0,"anc":false,"spec":"9g micro servo motor","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r03"},
+{"id":"r04","name":"MG996R High Torque Servo","category":"Robotics","type":"Servo","price":399,"rating":4.6,"battery_hours":0,"anc":false,"spec":"High torque metal gear servo","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r04"},
+{"id":"r05","name":"L298N Motor Driver","category":"Robotics","type":"Motor Driver","price":159,"rating":4.4,"battery_hours":0,"anc":false,"spec":"Dual H-bridge motor driver","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r05"},
+{"id":"r06","name":"N20 Gear Motor","category":"Robotics","type":"Motor","price":119,"rating":4.3,"battery_hours":0,"anc":false,"spec":"Mini DC gear motor","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r06"},
+{"id":"r07","name":"IR Line Tracking Sensor","category":"Robotics","type":"Sensor","price":79,"rating":4.2,"battery_hours":0,"anc":false,"spec":"IR line follower sensor","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=r07"},
+
+{"id":"t01","name":"Digital Multimeter DT830D","category":"Tools","type":"Multimeter","price":299,"rating":4.3,"battery_hours":0,"anc":false,"spec":"Digital voltage/current/resistance meter","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=t01"},
+{"id":"t02","name":"UNI-T UT33D+ Multimeter","category":"Tools","type":"Multimeter","price":899,"rating":4.6,"battery_hours":0,"anc":false,"spec":"Compact digital multimeter","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=t02"},
+{"id":"t03","name":"60W Soldering Station","category":"Tools","type":"Soldering","price":1299,"rating":4.4,"battery_hours":0,"anc":false,"spec":"Adjustable temperature soldering station","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=t03"},
+{"id":"t04","name":"Precision Electronics Tool Kit","category":"Tools","type":"Hand Tools","price":799,"rating":4.5,"battery_hours":0,"anc":false,"spec":"Screwdrivers + pliers + cutters","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=t04"},
+{"id":"t05","name":"USB Logic Analyzer","category":"Tools","type":"Testing","price":699,"rating":4.2,"battery_hours":0,"anc":false,"spec":"Digital signal analysis tool","product_link":"https://varsidhii-art.github.io/Buygen/product.html?id=t05"}
+]
